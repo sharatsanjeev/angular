@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pg 12</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<script>
+var app = angular.module("myapp", []);
+app.controller("myctrl", function ($scope) {
+$scope.getDate = function () {
+$scope.today = new Date();
+};
+});
+</script>
+<body ng-app="myapp" ng-controller="myctrl">
+<center>
+<h4>Today's Date is:- {{today | date}}</h4>
+<input type="button" value="Get Date" ng-click="getDate()">
+</center>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pg 8</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<body>
+<center>
+<form name="form" action="#">
+Enter Your Username:
+<input type="email" name="email" ng-model="email" required />
+<p ng-show="form.email.$error.email">Not an Email</p>
+<br><br>
+Enter Your Password:
+<input type="password" name="password" ng-model="password" ng-minlength="5" ng-maxlength="10" required />
+<p ng-show="form.password.$error.minlength">Too Small</p>
+<p ng-show="form.password.$error.maxlength">Too Long</p>
+<input type="submit" value="Submit">
+</form>
+</center>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<script>
+var app = angular.module("myapp", []);
+    app.controller("myctrl",function($scope){
+      $scope.name=[];
+      $scope.Add=function(){
+        var std={
+         NAME : $scope.Name,
+         USN : $scope.Usn
+        }
+        $scope.name.push(std);
+        clear();
+      }
+      $scope.UpperCase = function (x) {
+      $scope.name[x].NAME = $scope.name[x].NAME.toUpperCase();
+      $scope.name[x].USN = $scope.name[x].USN.toUpperCase();
+      }
+      function clear()
+      {
+        $scope.Name="";
+        $scope.Usn="";
+      }
+    })
+</script>
+<body ng-app="myapp" ng-controller="myctrl">
+  <center>
+  <p>ENTER THE NAME: </p>
+  <input type="text" ng-model="Name"><br>
+  <p>ENTER USN: </p>
+  <input type="text" ng-model="Usn"><br><br>
+  <input type="button" ng-click="Add()" value="Add">
+
+  <table border="2 solid black">
+    <th>NAME</th>
+    <th>USN</th>
+     <th>Actions</th> 
+    <tr ng-repeat = "x in name">
+      <td>{{x.NAME}}</td>
+      <td>{{x.USN}}</td>
+      <td><input type="button" ng-click="UpperCase($index)" value="Uppercase"></td>
+    </tr>
+  </center>
+</body>
+</html> 

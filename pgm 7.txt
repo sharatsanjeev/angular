@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<script>
+var app = angular.module("myapp", []);
+app.controller("myctrl", function ($scope) {
+$scope.students = [];
+$scope.Create = function () {
+$scope.students.push({
+usn: $scope.Stdusn,
+name: $scope.Stdname,
+cgpa: $scope.Stdcgpa
+});
+clear();
+}
+$scope.Delete = function (x) {
+$scope.students.splice(x, 1);
+clear();
+}
+$scope.Update = function (x) {
+if ($scope.val.toLowerCase() == "usn") {
+$scope.students[x].usn = $scope.add1;
+}
+if ($scope.val.toLowerCase() == "name") {
+$scope.students[x].name = $scope.add1;
+}
+if ($scope.val.toLowerCase() == "cgpa") {
+$scope.students[x].cgpa = $scope.add1;
+}
+clear();
+}
+function clear() {
+$scope.Stdusn = "";
+$scope.Stdname = "";
+$scope.Stdcgpa = "";
+$scope.add1 = "";
+$scope.val = "";
+}
+})
+</script>
+<body ng-app="myapp" ng-controller="myctrl" align="center">
+<h2>CRUD application</h2>
+<p>Enter Student USN: <input type="text" ng-model="Stdusn">
+<br>Enter Student Name: <input type="text" ng-model="Stdname">
+<br>Enter Student CGPA: <input type="text" ng-model="Stdcgpa">
+</p>
+<input type="button" value="Create" ng-click="Create()"><br><br>
+<table align="center" border="1">
+<tr>
+<th>USN</th>
+<th>Name</th>
+<th>CGPA</th>
+<th>Update</th>
+<th>Delete</th>
+</tr>
+<tr ng-repeat="x in students">
+<td>{{x.usn}}</td>
+<td>{{x.name}}</td>
+<td>{{x.cgpa}}</td>
+<td><input type="button" value="Update" ng-click="Update($index)"></td>
+<td><input type="button" value="Delete" ng-click="Delete($index)"></td>
+</tr>
+</table>
+<p>Value to Update: <input type="text" ng-model="add1"><br>
+Table Name : <input type="text" ng-model="val"></p>
+</body>
+</html> 

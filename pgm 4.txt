@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pgm4</title>
+</head>
+<body ng-controller="myctrl">
+    <center>
+    Enter the Number to find its Factorial and Square :<input type="number" ng-model="num" placeholder="Enter the number">
+    <br><br>
+
+    <p>Factorial of {{number}} is :{{fact}}</p>
+    <br>
+    <p>Square of {{number}} is :{{sqr}}</p>
+     <br>
+    <button ng-click="res()">Result</button>
+    </center>
+</body>
+<script>
+    var app=angular.module("myapp",[]);
+    app.controller("myctrl",function($scope){
+        $scope.res=function(){
+        var n=$scope.num;
+        var facto=$scope.fact;
+        facto=1;
+
+        for(var i=n;i>=1;i--)
+        {
+            facto=facto*i;
+        }
+
+        $scope.fact=parseInt(facto);
+        $scope.number=n;
+        $scope.sqr=n*n;
+
+        };
+    });
+</script>
+</html> 

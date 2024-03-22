@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<script>
+var app = angular.module("myapp", []);
+    app.controller("myctrl",function($scope){
+      $scope.name=[];
+      $scope.Add=function(){
+        var std={
+         NAME : $scope.Name,
+         SALARY : $scope.Salary
+        }
+        $scope.name.push(std);
+        clear();
+      }
+      function clear()
+      {
+        $scope.Name="";
+        $scope.Salary="";
+      }
+    })
+</script>
+<body ng-app="myapp" ng-controller="myctrl">
+  <center>
+  ENTER EMPLOYEE NAME: 
+  <input type="text" ng-model="Name"><br><br>
+  ENTER SALARY: 
+  <input type="text" ng-model="Salary"><br><br>
+  Search by Employee Name:
+  <input type="text" ng-model="searchName"><br><br>
+  Search by Employee Salary:
+  <input type="number" ng-model="searchSalary"><br><br>
+  <input type="button" ng-click="Add()" value="Add">
+
+  <table border="2 solid black">
+    <th>SL.NO</th>
+    <th>NAME</th>
+    <th>SALARY</th>
+    <tr ng-repeat = "x in name | filter:{NAME:searchName,SALARY:searchSalary}">
+      <td>{{$index+1}}</td>
+      <td>{{x.NAME}}</td>
+      <td>{{x.SALARY}}</td>
+    </tr>
+  </center>
+</body> 
+</html>
